@@ -3,3 +3,6 @@ https://medium.com/@nilayvishwakarma/build-an-npm-package-with-typescript-by-nil
 
 
 https://stackoverflow.com/questions/49264426/vuejs-custom-directive-emit-event
+
+https://github.com/RonaldJerez/vue-the-mask
+https://github.com/probil/v-mask
