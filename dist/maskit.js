@@ -1,16 +1,17 @@
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-function maskit(value, mask, masked = true, tokens) {
+exports.__esModule = true;
+function maskit(value, mask, masked, tokens) {
+    if (masked === void 0) { masked = true; }
     value = value || '';
     mask = mask || '';
-    let iMask = 0;
-    let iValue = 0;
-    let output = '';
-    let cMask;
+    var iMask = 0;
+    var iValue = 0;
+    var output = '';
+    var cMask;
     while (iMask < mask.length && iValue < value.length) {
         cMask = mask[iMask];
-        const masker = tokens[cMask];
-        const cValue = value[iValue];
+        var masker = tokens[cMask];
+        var cValue = value[iValue];
         if (masker && !masker.escape) {
             if (masker.pattern.test(cValue)) {
                 output += masker.transform ? masker.transform(cValue) : cValue;
@@ -33,7 +34,7 @@ function maskit(value, mask, masked = true, tokens) {
         }
     }
     // fix mask that ends with a char: (#)
-    let restOutput = '';
+    var restOutput = '';
     while (iMask < mask.length && masked) {
         cMask = mask[iMask];
         if (tokens[cMask]) {
@@ -45,4 +46,4 @@ function maskit(value, mask, masked = true, tokens) {
     }
     return output + restOutput;
 }
-exports.default = maskit;
+exports["default"] = maskit;

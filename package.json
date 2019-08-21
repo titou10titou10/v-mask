@@ -2,10 +2,13 @@
   "name": "v-mask",
   "version": "1.0.0",
   "description": "input mask for vue.js",
+  "author": "Denis Forveille <d.forveille@saq.qc.ca>",
+  "license": "MIT",
   "main": "dist/index.js",
+  "module": "dist/index.js",
   "scripts": {
     "build": "tsc",
-    "build:watch": "tsc --watch",
+    "watch": "tsc --watch",
     "lint": "tslint --project \"./tsconfig.json\"",
     "test": "echo \"Error: no test specified\" && exit 1",
     "docs": "typedoc --out docs src",
@@ -15,8 +18,6 @@
     "type": "git",
     "url": "git+https://github.com/titou10titou10/v-mask.git"
   },
-  "author": "Denis Forveille <d.forveille@saq.qc.ca>",
-  "license": "ISC",
   "bugs": {
     "url": "https://github.com/titou10titou10/v-mask/issues"
   },
@@ -24,7 +25,7 @@
   "devDependencies": {
     "@types/node": "^12.7.2",
     "gh-pages": "^2.1.1",
-    "tslint": "^5.18.0",
+    "tslint": "^5.19.0",
     "typedoc": "^0.15.0",
     "typescript": "^3.5.3",
     "vue": "^2.6.10"

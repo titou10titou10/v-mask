@@ -10,13 +10,13 @@ preDefined.set('phone', '(###) ### - ####');
 preDefined.set('social', '###-##-####');
 preDefined.set('time', '##:##');
 preDefined.set('time-with-seconds', '##:##:##');
-preDefined.set('code-postal', 'A#A #A#');
+preDefined.set('postalcode-ca', 'A#A #A#');
 
-const defaultDelimiters = /[-!$%^&*()_+|~=`{}[\]:";'<>?,./\\ ]/;
+const defaultDelimiters = /[-!$%^&*()_+|~=`{}[\]:";'<>?,.\\ ]/;
+const re = new RegExp(defaultDelimiters, 'g');
 
 const unmaskText = (text: string): string => {
-  return text ? String(text).replace(
-    new RegExp(defaultDelimiters, 'g'), '') : text;
+  return text ? String(text).replace(re, '') : text;
 };
 
 function event(name: string) {
