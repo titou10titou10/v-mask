@@ -1,4 +1,4 @@
-### @titou10titoui10/v-mask
+### @titou10/v-mask
 **A vue.js package that provides a directive to apply a mask to input tags**
 
 This package has been created after the`"mask"` property of the`"v-text-field"`component has been removed and I was not able to find another package that allow to **retrieve the masked and unmasked value** of an input text from a directive
