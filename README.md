@@ -35,13 +35,13 @@ export default {
 <v-text-field v-model="..." v-mask="{mask:'A##',unmaskedVar: 'myVar'}" />
 ```
 
-"mask" may contain:
-- a mask made with tokens (listed below)
-- the name of a predefined mask from the ones (listed below)
+"v-mask" may be:
+- a mask made of tokens (listed below)
+- the name of a predefined mask (from the ones listed below)
 - a "mask object" with the following properties:
   - mask: same as above
-  - unmaskedVar: name of a vairable defined in the "data" section of the component that will receive the unmasked twxt
-  - tokens: Replace the default tokens. eg tokens="{ 'Y': {pattern: /[0-9]/ }"
+  - unmaskedVar: name of a variable defined in the "data" section of the component that will receive the unmasked text. It may be a structure (egàbc.def.ghi`) but the first level must exist
+  - tokens: An array of token objects that will replace the default ones. eg `tokens="{ 'Y': {pattern: /[0-9]/ }"`
 
 
 ### Tokens (From vue-the-mask)
