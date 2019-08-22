@@ -6,7 +6,7 @@ This package has been created after the`"mask"` property of the`"v-text-field"`c
 Technically, it is a "merge" of the`vue-the-mask`package which is not maintained since years and the old`mask`code from vuetify v1.5.x
 
 Most of the credit goes to those 2 packages:    
-- [vue-the-mask](https://www.npmjs.com/package/vue-the-mask)
+- [vue-the-mask](https://github.com/vuejs-tips/vue-the-mask)
 - [vuetify v1.5.x code](https://github.com/vuetifyjs/vuetify/blob/v1.5.18/packages/vuetify/src/util/mask.ts)
 
 #### The differences with`vue-the-mask`are:
@@ -31,8 +31,8 @@ export default {
 }
 ```
 ```html
-<v-text-field v-model="..." mask="'###-###'" />
-<v-text-field v-model="..." mask="{ mask: '###-###', unmaskedVar: myVar }" />
+<v-text-field v-model="..." v-mask="'A#'" />
+<v-text-field v-model="..." v-mask="{mask:'A##',unmaskedVar: myVar}" />
 ```
 
 "mask" may contain:
