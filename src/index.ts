@@ -1,23 +1,10 @@
 
+import { set } from 'lodash';
+
 import masker from './masker';
+import getPredefined from './predefined';
+import { unmaskText } from './utils';
 import tokens from './tokens';
-
-const preDefined = new Map();
-preDefined.set('credit-card', '#### - #### - #### - ####');
-preDefined.set('date', '##/##/####');
-preDefined.set('date-with-time', '##/##/#### ##:##');
-preDefined.set('phone', '(###) ### - ####');
-preDefined.set('social', '###-##-####');
-preDefined.set('time', '##:##');
-preDefined.set('time-with-seconds', '##:##:##');
-preDefined.set('postalcode-ca', 'A#A #A#');
-
-const defaultDelimiters = /[-!$%^&*()_+|~=`{}[\]:";'<>?,.\\ ]/;
-const re = new RegExp(defaultDelimiters, 'g');
-
-const unmaskText = (text: string): string => {
-  return text ? String(text).replace(re, '') : text;
-};
 
 function event(name: string) {
   const evt = document.createEvent('Event');
@@ -38,8 +25,7 @@ export const mask = {
         tokens
       };
     }
-    const m = preDefined.get(config.mask);
-    config.mask = m ||  config.mask || '';
+    config.mask = getPredefined(config.mask) ||  config.mask || '';
 
     if (el.tagName.toLocaleUpperCase() !== 'INPUT') {
       const els = el.getElementsByTagName('input');
@@ -70,8 +56,7 @@ export const mask = {
         }, 0);
       }
       if (config.unmaskedVar) {
-        const uv = unmaskText(el.value);
-        vnode.context[config.unmaskedVar] = uv;
+        set(vnode.context, config.unmaskedVar, unmaskText(el.value));
       }
       el.dispatchEvent(event('input'));
     };
@@ -83,8 +68,7 @@ export const mask = {
     if (newDisplay !== el.value) {
       el.value = newDisplay;
       if (config.unmaskedVar) {
-        const uv = unmaskText(el.value);
-        vnode.context[config.unmaskedVar] = uv;
+        set(vnode.context, config.unmaskedVar, unmaskText(el.value));
       }
       el.dispatchEvent(event('input'));
     }

@@ -1,18 +1,19 @@
 {
-  "name": "@titou10titou10/v-mask",
-  "description": "mask directive for vue.js",
-  "version": "0.9.2",
+  "name": "@titou10/v-mask",
+  "description": "mask directive for vue.js that exposes the unmasked value",
+  "version": "0.9.0",
   "author": "Denis Forveille <titou10.titou10@gmail.com>",
   "license": "MIT",
-  "keywords": ["vue", "diretive","mask"],
+  "keywords": [
+    "vue",
+    "diretive",
+    "mask"
+  ],
   "main": "dist/index.js",
   "scripts": {
     "build": "tsc",
     "watch": "tsc --watch",
-    "lint": "tslint --project \"./tsconfig.json\"",
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "docs": "typedoc --out docs src",
-    "gh-pages": "rimraf docs && npm run docs && gh-pages -d docs"
+    "lint": "tslint --project \"./tsconfig.json\""
   },
   "repository": {
     "type": "git",
@@ -22,11 +23,13 @@
     "url": "https://github.com/titou10titou10/v-mask/issues"
   },
   "homepage": "https://github.com/titou10titou10/v-mask#readme",
+  "dependencies": {
+    "@types/lodash": "^4.14.137",
+    "lodash.set": "^4.3.2"
+  },
   "devDependencies": {
     "@types/node": "^12.7.2",
-    "gh-pages": "^2.1.1",
     "tslint": "^5.19.0",
-    "typedoc": "^0.15.0",
     "typescript": "^3.5.3",
     "vue": "^2.6.10"
   }

@@ -17,31 +17,31 @@ Most of the credit goes to those 2 packages:
 ### Install
 
 ```sh
-npm install @titou10titou10/v-mask --save
-yarn add @titou10titou10/v-mask
-bower install @titou10titou10/v-mask --save
+npm install @titou10/v-mask --save
+yarn add @titou10/v-mask
+bower install @titou10/v-mask --save
 ```
 
 
 ### Usage
 ```js
-import { mask } from ' @titou10titoui10/v-mask'
+import { mask } from ' @titou10/v-mask'
 export default {
   directives: { mask }
 }
 ```
 ```html
 <v-text-field v-model="..." v-mask="'A#'" />
-<v-text-field v-model="..." v-mask="{mask:'A##',unmaskedVar: myVar}" />
+<v-text-field v-model="..." v-mask="{mask:'A##',unmaskedVar: 'myVar'}" />
 ```
 
 "mask" may contain:
-- a mask made with tokens listed below
-- the name of a predefined mask from the ones listed below
+- a mask made with tokens (listed below)
+- the name of a predefined mask from the ones (listed below)
 - a "mask object" with the following properties:
   - mask: same as above
   - unmaskedVar: name of a vairable defined in the "data" section of the component that will receive the unmasked twxt
-  - tokens: Replace the default tokens. eg tokens='{ 'Y': {pattern: /[0-9]/ }'
+  - tokens: Replace the default tokens. eg tokens="{ 'Y': {pattern: /[0-9]/ }"
 
 
 ### Tokens (From vue-the-mask)
