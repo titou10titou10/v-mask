@@ -1,11 +1,11 @@
 {
-  "name": "v-mask",
-  "version": "1.0.0",
-  "description": "input mask for vue.js",
-  "author": "Denis Forveille <d.forveille@saq.qc.ca>",
+  "name": "@titou10titou10/v-mask",
+  "description": "mask directive for vue.js",
+  "version": "0.9.2",
+  "author": "Denis Forveille <titou10.titou10@gmail.com>",
   "license": "MIT",
+  "keywords": ["vue", "diretive","mask"],
   "main": "dist/index.js",
-  "module": "dist/index.js",
   "scripts": {
     "build": "tsc",
     "watch": "tsc --watch",
