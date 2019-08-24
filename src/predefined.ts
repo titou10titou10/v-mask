@@ -1,4 +1,4 @@
-const  predefined =   [
+const predefined = [
   { id: 'credit-card', mask: '#### - #### - #### - ####'},
   { id: 'date', mask: '##/##/####'},
   { id: 'date-iso', mask: '####-##-##'},
