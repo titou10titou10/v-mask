@@ -1,7 +1,7 @@
 {
   "name": "@titou10/v-mask",
   "description": "mask directive for vue.js that exposes the unmasked value",
-  "version": "0.9.4",
+  "version": "0.9.5",
   "author": "Denis Forveille <titou10.titou10@gmail.com>",
   "license": "MIT",
   "keywords": [

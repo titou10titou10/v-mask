@@ -2,22 +2,12 @@
 **A vue.js package that provides a directive to apply a mask to input tags**
 
 ### TD;LR;
-A`"mask"` directive for Vue.js that sets the **masked** and **unmasked**** value of an`"input"`component (ie the `"v-text-field"` component from vuetify)
+A`"mask"` directive for Vue.js that sets the **masked** and **unmasked** value of an`"input"`component (eg the `"v-text-field"` component from vuetify)
 
 #### The differences with`"vue-the-mask"`:
 - "v-model" will always contain the masked value, the directive may also set the unmasked value to a specified variable (see below)
 - the package provides predefined masks (see below)
 - the package does not include a Vue.js component, just a directive
-
-#### Why this package?
-This package has been created after the`"mask"` property of the`"v-text-field"`component has been removed and I was not able to find another package that allow to **retrieve the masked and unmasked value** of an input text from a directive
-
-Technically, it is a "merge" of the`vue-the-mask`package, which is not maintained since years, and the old`mask`code from vuetify v1.5.x
-
-Most of the credit goes to: 
-- [vuetify v1.5.x code](https://github.com/vuetifyjs/vuetify/blob/v1.5.18/packages/vuetify/src/util/mask.ts)
-- [vue-the-mask](https://github.com/vuejs-tips/vue-the-mask)
-- [RonaldJerez/vue-the-mask](https://github.com/RonaldJerez/vue-the-mask)
 
 ### Install
 
@@ -66,3 +56,13 @@ export default {
 - `time: '##:##'`
 - `time-with-seconds: '##:##:##'`
 - `postalcode-ca:  'A#A #A#'`
+
+#### Why this package?
+This package has been created after the`"mask"` property of the`"v-text-field"`component has been removed and I was not able to find another package that allow to **retrieve the masked and unmasked value** of an input text from a directive
+
+Technically, it is a "merge" of the`vue-the-mask`package, which is not maintained since years, and the old`mask`code from vuetify v1.5.x
+
+Most of the credit goes to: 
+- [vuetify v1.5.x code](https://github.com/vuetifyjs/vuetify/blob/v1.5.18/packages/vuetify/src/util/mask.ts)
+- [vue-the-mask](https://github.com/vuejs-tips/vue-the-mask)
+- [RonaldJerez/vue-the-mask](https://github.com/RonaldJerez/vue-the-mask)
