@@ -1,17 +1,19 @@
 {
   "name": "@titou10/v-mask",
   "description": "mask directive for vue.js that exposes the unmasked value",
-  "version": "0.9.2",
+  "version": "0.9.3",
   "author": "Denis Forveille <titou10.titou10@gmail.com>",
   "license": "MIT",
   "keywords": [
     "vue",
     "directive",
-    "mask", 
+    "mask",
     "v-mask"
   ],
   "main": "dist/index.js",
-  "files": ["dist"],
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "build": "tsc",
     "watch": "tsc --watch",
@@ -26,10 +28,10 @@
   },
   "homepage": "https://github.com/titou10titou10/v-mask#readme",
   "dependencies": {
-    "@types/lodash": "^4.14.137",
     "lodash.set": "^4.3.2"
   },
   "devDependencies": {
+    "@types/lodash": "^4.14.137",
     "@types/node": "^12.7.2",
     "tslint": "^5.19.0",
     "typescript": "^3.5.3",

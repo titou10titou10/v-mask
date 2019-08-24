@@ -3,6 +3,7 @@ exports.__esModule = true;
 var predefined = [
     { id: 'credit-card', mask: '#### - #### - #### - ####' },
     { id: 'date', mask: '##/##/####' },
+    { id: 'date-iso', mask: '####-##-##' },
     { id: 'date-with-time', mask: '##/##/#### ##:##' },
     { id: 'phone', mask: '(###) ### - ####' },
     { id: 'social', mask: '###-##-####' },
