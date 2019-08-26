@@ -1,7 +1,7 @@
 ### @titou10/v-mask
 **A vue.js package that provides a directive to apply a mask to input tags**
 
-### TD;LR;
+### TL;DR;
 A`"mask"` directive for Vue.js that sets the **masked** and **unmasked** value of an`"input"`component (eg the `"v-text-field"` component from vuetify)
 
 #### The differences with`"vue-the-mask"`:
@@ -29,13 +29,13 @@ export default {
 ```
 
 **v-mask** may be:
-- a mask made of tokens (listed below)
+- a mask (string) made of "tokens" (listed below)
 - the name of a predefined mask (from the ones listed below)
-- a "mask object" with the following properties:
+- an "object" with the following attributes:
   - `mask`: same as above
   - `unmaskedVar`: name of a variable defined in the "data" section of the component that will receive the "unmasked" text. It may be a structure (eg`"a.bc.d"`), but the first "level" must exists
-  - `nullIfEmpty`: Set the`unmaskedVar` to null if the input value is empty. Default=true  
-  - `tokens`: An array of token objects that will replace the default ones. eg `tokens="{ 'Y': {pattern: /[0-9]/ }"`
+  - `nullIfEmpty`: Set `"unmaskedVar"` to null if the input value is empty. Default to **true**  
+  - `tokens`: An array of token objects that will replace the default ones. eg `tokens="[{ 'Y': {pattern: /[0-9]/ }]"`
 
 ### Tokens (From vue-the-mask)
 
@@ -46,13 +46,15 @@ export default {
 - `'a': {pattern: /[a-zA-Z]/, transform: v => v.toLocaleLowerCase()}`
 - `'!': {escape: true}`
 
-### Predefined masks (From vuetify v1.5.x)
+### Predefined masks (Most from vuetify v1.5.x)
 
 - `credit-card: '#### - #### - #### - ####'`
+- `credit-card2: '#### #### #### ####'`
 - `date: '##/##/####'`
 - `date-iso: '####-##-##'`
 - `date-with-time: '##/##/#### ##:##'`
 - `phone: '(###) ### - ####'`
+- `phone2: '### ### - ####'`
 - `social: '###-##-####'`
 - `time: '##:##'`
 - `time-with-seconds: '##:##:##'`
