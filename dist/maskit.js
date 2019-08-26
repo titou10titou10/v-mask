@@ -2,16 +2,16 @@
 exports.__esModule = true;
 function maskit(value, mask, masked, tokens) {
     if (masked === void 0) { masked = true; }
-    value = value || '';
-    mask = mask || '';
+    var val = value || '';
+    var m = mask || '';
     var iMask = 0;
     var iValue = 0;
     var output = '';
     var cMask;
-    while (iMask < mask.length && iValue < value.length) {
-        cMask = mask[iMask];
+    while (iMask < m.length && iValue < val.length) {
+        cMask = m[iMask];
         var masker = tokens[cMask];
-        var cValue = value[iValue];
+        var cValue = val[iValue];
         if (masker && !masker.escape) {
             if (masker.pattern.test(cValue)) {
                 output += masker.transform ? masker.transform(cValue) : cValue;
@@ -22,7 +22,7 @@ function maskit(value, mask, masked, tokens) {
         else {
             if (masker && masker.escape) {
                 iMask++; // take the next mask char and treat it as char
-                cMask = mask[iMask];
+                cMask = m[iMask];
             }
             if (masked) {
                 output += cMask;
@@ -35,8 +35,8 @@ function maskit(value, mask, masked, tokens) {
     }
     // fix mask that ends with a char: (#)
     var restOutput = '';
-    while (iMask < mask.length && masked) {
-        cMask = mask[iMask];
+    while (iMask < m.length && masked) {
+        cMask = m[iMask];
         if (tokens[cMask]) {
             restOutput = '';
             break;

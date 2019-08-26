@@ -1,15 +1,18 @@
 export default function maskit(value: string,
-                               mask: string, masked = true, tokens) {
-  value = value || '';
-  mask = mask || '';
+                               mask: string,
+                               masked = true,
+                               tokens) {
+
+  const val = value || '';
+  const m = mask || '';
   let iMask = 0;
   let iValue = 0;
   let output = '';
   let cMask;
-  while (iMask < mask.length && iValue < value.length) {
-    cMask = mask[iMask];
+  while (iMask < m.length && iValue < val.length) {
+    cMask = m[iMask];
     const masker = tokens[cMask];
-    const cValue = value[iValue];
+    const cValue = val[iValue];
     if (masker && !masker.escape) {
       if (masker.pattern.test(cValue)) {
         output += masker.transform ? masker.transform(cValue) : cValue;
@@ -19,7 +22,7 @@ export default function maskit(value: string,
     } else {
       if (masker && masker.escape) {
         iMask++; // take the next mask char and treat it as char
-        cMask = mask[iMask];
+        cMask = m[iMask];
       }
       if (masked) { output += cMask; }
       if (cValue === cMask) { iValue++; } // user typed the same char
@@ -29,8 +32,8 @@ export default function maskit(value: string,
 
   // fix mask that ends with a char: (#)
   let restOutput = '';
-  while (iMask < mask.length && masked) {
-    cMask = mask[iMask];
+  while (iMask < m.length && masked) {
+    cMask = m[iMask];
     if (tokens[cMask]) {
       restOutput = '';
       break;

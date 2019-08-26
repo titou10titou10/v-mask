@@ -3,8 +3,8 @@ import { set } from 'lodash';
 
 import masker from './masker';
 import getPredefined from './predefined';
-import { unmaskText } from './utils';
 import tokens from './tokens';
+import { unmaskText } from './utils';
 
 // Helpers
 function event(name: string) {
@@ -39,15 +39,20 @@ function getConfig(binding) {
 }
 
 function run(el , eventName: string, config, vnode) {
+
+  // Handle when initial value is not set
+  const val = el.value === 'undefined' ? '' : el.value;
+
   let position = el.selectionEnd;
   // save the character just inserted
-  const digit = el.value[position - 1];
-  el.value = masker(el.value, config.mask, config.masked, config.tokens);
+  const digit = val[position - 1];
+  el.value = masker(val, config.mask, config.masked, config.tokens);
   // if the digit was changed, increment position until find the digit again
   while (position < el.value.length &&
         el.value.charAt(position - 1) !== digit) {
-    position++;
+          position++;
   }
+
   if (el === document.activeElement) {
     el.setSelectionRange(position, position);
     setTimeout(function() {

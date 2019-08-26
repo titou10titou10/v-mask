@@ -3,8 +3,8 @@ exports.__esModule = true;
 var lodash_1 = require("lodash");
 var masker_1 = require("./masker");
 var predefined_1 = require("./predefined");
-var utils_1 = require("./utils");
 var tokens_1 = require("./tokens");
+var utils_1 = require("./utils");
 // Helpers
 function event(name) {
     var evt = document.createEvent('Event');
@@ -37,10 +37,12 @@ function getConfig(binding) {
     return config;
 }
 function run(el, eventName, config, vnode) {
+    // Handle when initial value is not set
+    var val = el.value === 'undefined' ? '' : el.value;
     var position = el.selectionEnd;
     // save the character just inserted
-    var digit = el.value[position - 1];
-    el.value = masker_1["default"](el.value, config.mask, config.masked, config.tokens);
+    var digit = val[position - 1];
+    el.value = masker_1["default"](val, config.mask, config.masked, config.tokens);
     // if the digit was changed, increment position until find the digit again
     while (position < el.value.length &&
         el.value.charAt(position - 1) !== digit) {
