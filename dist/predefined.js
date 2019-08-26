@@ -2,10 +2,12 @@
 exports.__esModule = true;
 var predefined = [
     { id: 'credit-card', mask: '#### - #### - #### - ####' },
+    { id: 'credit-card2', mask: '#### #### #### ####' },
     { id: 'date', mask: '##/##/####' },
     { id: 'date-iso', mask: '####-##-##' },
     { id: 'date-with-time', mask: '##/##/#### ##:##' },
     { id: 'phone', mask: '(###) ### - ####' },
+    { id: 'phone2', mask: '### ### - ####' },
     { id: 'social', mask: '###-##-####' },
     { id: 'time', mask: '##:##' },
     { id: 'time-with-seconds', mask: '##:##:##' },
