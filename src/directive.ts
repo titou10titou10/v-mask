@@ -24,16 +24,21 @@ function getInput(el) {
 }
 
 function getConfig(binding) {
-  let config = binding.value || {};
+  const config = {
+    masked: true,
+    mask: 'null',
+    unmaskedVar: null,
+    nullIfEmpty: true,
+    tokens
+  };
 
-  if (Array.isArray(config) || typeof config === 'string') {
-    config = {
-      masked: true,
-      mask: config,
-      unmaskedVar: null,
-      tokens
-    };
+  if (typeof binding.value === 'string') {
+     config.mask = binding.value ;
+  } else {
+    Object.assign(config, binding.value);
   }
+
+  // Set predefined eventually
   config.mask = getPredefined(config.mask) ||  config.mask || '';
   return config;
 }
@@ -59,9 +64,19 @@ function run(el , eventName: string, config, vnode) {
       el.setSelectionRange(position, position);
     }, 0);
   }
+
+  // Set unmasked value
   if (config.unmaskedVar) {
-    set(vnode.context, config.unmaskedVar, unmaskText(el.value));
+    // set null instead of empty if required
+    const ut = unmaskText(el.value);
+    if (config.nullIfEmpty && ut.trim().length === 0) {
+      set(vnode.context, config.unmaskedVar, null);
+    } else {
+      set(vnode.context, config.unmaskedVar, ut);
+    }
   }
+
+  // Notify listeners
   el.dispatchEvent(event(eventName));
 }
 

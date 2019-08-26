@@ -24,15 +24,20 @@ function getInput(el) {
     return el;
 }
 function getConfig(binding) {
-    var config = binding.value || {};
-    if (Array.isArray(config) || typeof config === 'string') {
-        config = {
-            masked: true,
-            mask: config,
-            unmaskedVar: null,
-            tokens: tokens_1["default"]
-        };
+    var config = {
+        masked: true,
+        mask: 'null',
+        unmaskedVar: null,
+        nullIfEmpty: true,
+        tokens: tokens_1["default"]
+    };
+    if (typeof binding.value === 'string') {
+        config.mask = binding.value;
     }
+    else {
+        Object.assign(config, binding.value);
+    }
+    // Set predefined eventually
     config.mask = predefined_1["default"](config.mask) || config.mask || '';
     return config;
 }
@@ -54,9 +59,18 @@ function run(el, eventName, config, vnode) {
             el.setSelectionRange(position, position);
         }, 0);
     }
+    // Set unmasked value
     if (config.unmaskedVar) {
-        lodash_1.set(vnode.context, config.unmaskedVar, utils_1.unmaskText(el.value));
+        // set null instead of empty if required
+        var ut = utils_1.unmaskText(el.value);
+        if (config.nullIfEmpty && ut.trim().length === 0) {
+            lodash_1.set(vnode.context, config.unmaskedVar, null);
+        }
+        else {
+            lodash_1.set(vnode.context, config.unmaskedVar, ut);
+        }
     }
+    // Notify listeners
     el.dispatchEvent(event(eventName));
 }
 // Vue.js directive hooks
