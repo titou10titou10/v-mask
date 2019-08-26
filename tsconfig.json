@@ -2,7 +2,7 @@
   "compilerOptions": {
     "module": "CommonJS",
     "outDir": "./dist/",
-    "noImplicitAny": true,
+    "noImplicitAny": false,
     "declaration": true,
     "strict": true
   }

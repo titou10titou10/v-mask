@@ -1,3 +1,4 @@
-export declare const mask: {
-    bind(el: any, binding: any, vnode: any): void;
-};
+import mask from './directive';
+declare function install(Vue: any): void;
+export { mask };
+export default install;
