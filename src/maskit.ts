@@ -1,5 +1,5 @@
 export default function maskit(value: string,
-                               mask: string, masked = true, tokens: any) {
+                               mask: string, masked = true, tokens) {
   value = value || '';
   mask = mask || '';
   let iMask = 0;
