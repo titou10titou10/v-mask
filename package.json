@@ -1,7 +1,7 @@
 {
   "name": "@titou10/v-mask",
   "description": "mask directive for vue.js that exposes the unmasked value",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "author": "Denis Forveille <titou10.titou10@gmail.com>",
   "license": "MIT",
   "keywords": [
@@ -31,10 +31,10 @@
     "lodash.set": "^4.3.2"
   },
   "devDependencies": {
-    "@types/lodash": "^4.14.137",
-    "@types/node": "^12.7.2",
-    "tslint": "^5.19.0",
-    "typescript": "^3.5.3",
+    "@types/lodash": "^4.14.138",
+    "@types/node": "^12.7.5",
+    "tslint": "^5.20.0",
+    "typescript": "^3.6.3",
     "vue": "^2.6.10"
   }
 }

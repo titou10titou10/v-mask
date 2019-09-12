@@ -22,10 +22,11 @@ import { mask } from ' @titou10/v-mask'
 export default {
   directives: { mask }
 }
-```
-```html
 <v-text-field v-model="..." v-mask="{mask:'A##', unmaskedVar: 'myVar'}" />
 <v-text-field v-model="..." v-mask="'A#'" />
+<v-text-field v-model="..." v-mask.number="{mask:'##', unmaskedVar: 'myVar'}" />
+<v-text-field v-model="..." v-mask="{mask:'##', unmaskedVar: 'myVar', number: true}" />
+
 ```
 
 **v-mask** may be:
@@ -34,8 +35,10 @@ export default {
 - an "object" with the following attributes:
   - `mask`: same as above
   - `unmaskedVar`: name of a variable defined in the "data" section of the component that will receive the "unmasked" text. It may be a structure (eg`"a.bc.d"`), but the first "level" must exists
-  - `nullIfEmpty`: Set `"unmaskedVar"` to null if the input value is empty. Defaults to **true**  
-  - `tokens`: An array of token objects that will replace the default ones. eg `tokens="[{ 'Y': {pattern: /[0-9]/ }]"`
+  - `nullIfEmpty` (Defaults to **true** ): Set `"unmaskedVar"` to null if the input value is empty. 
+  - `number` (Defaults to **false**): Try to cast the valof of `"unmaskedVar"` to a numbe (see below)
+  - `tokens` (Defaults to the default ones below): An array of token objects that will replace the default ones. eg `tokens="[{ 'Y': {pattern: /[0-9]/ }]"`
+  
 
 ### Tokens (From vue-the-mask)
 
@@ -59,6 +62,9 @@ export default {
 - `time: '##:##'`
 - `time-with-seconds: '##:##:##'`
 - `postalcode-ca:  'A#A #A#'`
+
+### Modifiers
+`.number`: The value set to`unmaskedVar`is typecast as a number. If the value cannot be parsed with parseFloat(), then the original value is returned.
 
 #### Why this package?
 This package has been created after the`"mask"` property of the`"v-text-field"`component has been removed and I was not able to find another package that allow to **retrieve the masked and unmasked value** of an input text from a directive

@@ -29,6 +29,7 @@ function getConfig(binding) {
     mask: 'null',
     unmaskedVar: null,
     nullIfEmpty: true,
+    number: false,
     tokens
   };
 
@@ -37,6 +38,10 @@ function getConfig(binding) {
   } else {
     Object.assign(config, binding.value);
   }
+
+  // Capture ".number" modifier
+  const modifiers = binding.modifiers;
+  config.number = modifiers && modifiers.number;
 
   // Set predefined eventually
   config.mask = getPredefined(config.mask) ||  config.mask || '';
@@ -67,12 +72,19 @@ function run(el , eventName: string, config, vnode) {
 
   // Set unmasked value
   if (config.unmaskedVar) {
-    // set null instead of empty if required
     const ut = unmaskText(el.value);
+
     if (config.nullIfEmpty && ut.trim().length === 0) {
+      // Set null instead of empty if required
       set(vnode.context, config.unmaskedVar, null);
     } else {
-      set(vnode.context, config.unmaskedVar, ut);
+      if (config.number) {
+        // Convert to number if requested
+        const vNumber = parseFloat(ut);
+        set(vnode.context, config.unmaskedVar, isNaN(vNumber) ? ut : vNumber);
+      } else {
+        set(vnode.context, config.unmaskedVar, ut);
+      }
     }
   }
 
@@ -85,8 +97,8 @@ function run(el , eventName: string, config, vnode) {
 function bind(el, binding, vnode) {
   if (binding.value === false) { return; }
 
-  el = getInput(el);
-  run(el, 'input', getConfig(binding), vnode);
+  const realEl = getInput(el);
+  run(realEl, 'input', getConfig(binding), vnode);
 }
 
 function componentUpdated(el, binding, vnode, oldVnode) {

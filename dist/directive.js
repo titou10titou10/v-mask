@@ -29,6 +29,7 @@ function getConfig(binding) {
         mask: 'null',
         unmaskedVar: null,
         nullIfEmpty: true,
+        number: false,
         tokens: tokens_1["default"]
     };
     if (typeof binding.value === 'string') {
@@ -37,6 +38,9 @@ function getConfig(binding) {
     else {
         Object.assign(config, binding.value);
     }
+    // Capture ".number" modifier
+    var modifiers = binding.modifiers;
+    config.number = modifiers && modifiers.number;
     // Set predefined eventually
     config.mask = predefined_1["default"](config.mask) || config.mask || '';
     return config;
@@ -61,13 +65,20 @@ function run(el, eventName, config, vnode) {
     }
     // Set unmasked value
     if (config.unmaskedVar) {
-        // set null instead of empty if required
         var ut = utils_1.unmaskText(el.value);
         if (config.nullIfEmpty && ut.trim().length === 0) {
+            // Set null instead of empty if required
             lodash_1.set(vnode.context, config.unmaskedVar, null);
         }
         else {
-            lodash_1.set(vnode.context, config.unmaskedVar, ut);
+            if (config.number) {
+                // Convert to number if requested
+                var vNumber = parseFloat(ut);
+                lodash_1.set(vnode.context, config.unmaskedVar, isNaN(vNumber) ? ut : vNumber);
+            }
+            else {
+                lodash_1.set(vnode.context, config.unmaskedVar, ut);
+            }
         }
     }
     // Notify listeners
@@ -78,8 +89,8 @@ function bind(el, binding, vnode) {
     if (binding.value === false) {
         return;
     }
-    el = getInput(el);
-    run(el, 'input', getConfig(binding), vnode);
+    var realEl = getInput(el);
+    run(realEl, 'input', getConfig(binding), vnode);
 }
 function componentUpdated(el, binding, vnode, oldVnode) {
     if (binding.value === false) {
