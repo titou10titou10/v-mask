@@ -1,12 +1,13 @@
-
 import { set } from 'lodash';
 
 import masker from './masker';
-import getPredefined from './predefined';
+import predefinedMasks from './predefined';
 import tokens from './tokens';
 import { unmaskText } from './utils';
 
+// -------
 // Helpers
+// -------
 function event(name: string) {
   const evt = document.createEvent('Event');
   evt.initEvent(name, true, true);
@@ -43,8 +44,8 @@ function getConfig(binding) {
   const modifiers = binding.modifiers;
   config.number = modifiers && modifiers.number;
 
-  // Set predefined eventually
-  config.mask = getPredefined(config.mask) ||  config.mask || '';
+  // Set mask from a predefined one eventually
+  config.mask = predefinedMasks(config.mask) ||  config.mask || '';
   return config;
 }
 
@@ -70,7 +71,7 @@ function run(el , eventName: string, config, vnode) {
     }, 0);
   }
 
-  // Set unmasked value
+  // Set unmasked value if required
   if (config.unmaskedVar) {
     const ut = unmaskText(el.value);
 
@@ -79,7 +80,7 @@ function run(el , eventName: string, config, vnode) {
       set(vnode.context, config.unmaskedVar, null);
     } else {
       if (config.number) {
-        // Convert to number if requested
+        // Convert to number if required
         const vNumber = parseFloat(ut);
         set(vnode.context, config.unmaskedVar, isNaN(vNumber) ? ut : vNumber);
       } else {
@@ -94,8 +95,9 @@ function run(el , eventName: string, config, vnode) {
   }
 }
 
-// Vue.js directive hooks
-
+// -------------------------------
+// Vue.js directive hook functions
+// -------------------------------
 function bind(el, binding, vnode) {
   if (binding.value === false) { return; }
 
