@@ -47,11 +47,11 @@ function getConfig(binding) {
 }
 function run(el, eventName, config, vnode) {
     // Handle when initial value is not set
-    var val = el.value === 'undefined' ? '' : el.value;
+    var beforeValue = el.value === 'undefined' ? '' : el.value;
     var position = el.selectionEnd;
     // save the character just inserted
-    var digit = val[position - 1];
-    el.value = masker_1["default"](val, config.mask, config.masked, config.tokens);
+    var digit = beforeValue[position - 1];
+    el.value = masker_1["default"](beforeValue, config.mask, config.masked, config.tokens);
     // if the digit was changed, increment position until find the digit again
     while (position < el.value.length &&
         el.value.charAt(position - 1) !== digit) {
@@ -81,8 +81,10 @@ function run(el, eventName, config, vnode) {
             }
         }
     }
-    // Notify listeners
-    el.dispatchEvent(event(eventName));
+    // Notify listeners only if value changed (ie send an extra 'input' event)
+    if (beforeValue !== el.value) {
+        el.dispatchEvent(event(eventName));
+    }
 }
 // Vue.js directive hooks
 function bind(el, binding, vnode) {
