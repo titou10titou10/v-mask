@@ -5,50 +5,6 @@ import predefinedMasks from './predefined';
 import tokens from './tokens';
 import { unmaskText } from './utils';
 
-// -------
-// Helpers
-// -------
-function event(name: string) {
-  const evt = document.createEvent('Event');
-  evt.initEvent(name, true, true);
-  return evt;
-}
-
-function getInput(el) {
-  if (el.tagName.toLocaleUpperCase() !== 'INPUT') {
-    const els = el.getElementsByTagName('input');
-    if (els.length !== 1) {
-      throw new Error(`v-mask requires 1 input, found ${els.length}`);
-    } else { el = els[0]; }
-  }
-  return el;
-}
-
-function getConfig(binding) {
-  const config = {
-    masked: true,
-    mask: 'null',
-    unmaskedVar: null,
-    nullIfEmpty: true,
-    number: false,
-    tokens
-  };
-
-  if (typeof binding.value === 'string') {
-     config.mask = binding.value ;
-  } else {
-    Object.assign(config, binding.value);
-  }
-
-  // Capture ".number" modifier
-  const modifiers = binding.modifiers;
-  config.number = modifiers && modifiers.number;
-
-  // Set mask from a predefined one eventually
-  config.mask = predefinedMasks(config.mask) ||  config.mask || '';
-  return config;
-}
-
 function run(el , eventName: string, config, vnode) {
 
   // Handle when initial value is not set
@@ -95,6 +51,50 @@ function run(el , eventName: string, config, vnode) {
   }
 }
 
+// -------
+// Helpers
+// -------
+function event(name: string) {
+  const evt = document.createEvent('Event');
+  evt.initEvent(name, true, true);
+  return evt;
+}
+
+function getInput(el) {
+  if (el.tagName.toLocaleUpperCase() !== 'INPUT') {
+    const els = el.getElementsByTagName('input');
+    if (els.length !== 1) {
+      throw new Error(`v-mask requires 1 input, found ${els.length}`);
+    } else { el = els[0]; }
+  }
+  return el;
+}
+
+function getConfig(binding) {
+  const config = {
+    masked: true,
+    mask: 'null',
+    unmaskedVar: null,
+    nullIfEmpty: true,
+    number: false,
+    tokens
+  };
+
+  if (typeof binding.value === 'string') {
+     config.mask = binding.value ;
+  } else {
+    Object.assign(config, binding.value);
+  }
+
+  // Capture ".number" modifier
+  const modifiers = binding.modifiers;
+  config.number = modifiers && modifiers.number;
+
+  // Set mask from a predefined one eventually
+  config.mask = predefinedMasks(config.mask) ||  config.mask || '';
+  return config;
+}
+
 // -------------------------------
 // Vue.js directive hook functions
 // -------------------------------
@@ -113,9 +113,9 @@ function componentUpdated(el, binding, vnode, oldVnode) {
   const oldData = oldVnode.data.props || oldVnode.data.model;
   if (data && data.value === oldData.value) { return; }
 
-  el = getInput(el);
-  el.value = data ? data.value : el.value;
-  run(el, 'input', getConfig(binding), vnode);
+  const realEl =  getInput(el);
+  realEl.value = data ? data.value : realEl.value;
+  run(realEl, 'input', getConfig(binding), vnode);
 }
 
 export default { bind, componentUpdated };

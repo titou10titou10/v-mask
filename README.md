@@ -2,7 +2,7 @@
 **A vue.js package that provides a directive to apply a mask to input tags**
 
 ### TL;DR;
-A`"mask"` directive for Vue.js that sets the **masked** and **unmasked** value of an`"input"`component (eg the `"v-text-field"` component from vuetify)
+A`"mask"`directive for Vue.js that sets the **masked** and **unmasked** value of an`"input"`component (eg the `"v-text-field"` component from vuetify)
 
 #### The differences with`"vue-the-mask"`:
 - "v-model" will always contain the masked value, the directive may also set the unmasked value to a specified variable (see below)
@@ -66,7 +66,7 @@ export default {
 ### Modifiers
 `.number`: The value set to`unmaskedVar`is typecast as a number. If the value cannot be parsed with parseFloat(), then the original value is returned.
 
-#### Why this package?
+### Why this package?
 This package has been created after the`"mask"` property of the`"v-text-field"`component has been removed and I was not able to find another package that allow to **retrieve the masked and unmasked value** of an input text from a directive
 
 Technically, it is a "merge" of the`vue-the-mask`package, which is not maintained since years, and the old`mask`code from vuetify v1.5.x
