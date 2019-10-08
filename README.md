@@ -2,7 +2,7 @@
 **A vue.js package that provides a directive to apply a mask to input tags**
 
 ### TL;DR;
-A`"mask"`directive for Vue.js that sets the **masked** and **unmasked** value of an`"input"`component (eg the `"v-text-field"` component from vuetify)
+A`"mask"`directive for Vue.js that sets the **masked** and **unmasked** value of an`"input"`component (eg the`"v-text-field"`component from vuetify)
 
 #### The differences with`"vue-the-mask"`:
 - "v-model" will always contain the masked value, the directive may also set the unmasked value to a specified variable (see below)
@@ -18,7 +18,7 @@ bower install @titou10/v-mask --save
 ```
 ### Usage
 ```js
-import { mask } from ' @titou10/v-mask'
+import { mask } from '@titou10/v-mask'
 export default {
   directives: { mask }
 }
@@ -35,8 +35,8 @@ export default {
 - an "object" with the following attributes:
   - `mask`: same as above
   - `unmaskedVar`: name of a variable defined in the "data" section of the component that will receive the "unmasked" text. It may be a structure (eg`"a.bc.d"`), but the first "level" must exists
-  - `nullIfEmpty` (Defaults to **true** ): Set `"unmaskedVar"` to null if the input value is empty. 
-  - `number` (Defaults to **false**): Try to cast the valof of `"unmaskedVar"` to a numbe (see below)
+  - `nullIfEmpty` (Defaults to **true** ): Set`"unmaskedVar"`to null if the input value is empty
+  - `number` (Defaults to **false**): Try to cast the value of`"unmaskedVar"`to number (see below)
   - `tokens` (Defaults to the default ones below): A structure of token objects that will replace the default ones. eg `tokens="{ 'Y': {pattern: /[A-Z]/,transform: v => v.toLocaleUpperCase()}, '#': { pattern: /\d/} }"`
   
 
@@ -64,10 +64,10 @@ export default {
 - `postalcode-ca:  'A#A #A#'`
 
 ### Modifiers
-`.number`: The value set to`unmaskedVar`is typecast as a number. If the value cannot be parsed with parseFloat(), then the original value is returned.
+`.number`: The value set to`unmaskedVar`is typecast as a number. If the value cannot be parsed with`"parseFloat()"`, the original value is returned.
 
 ### Why this package?
-This package has been created after the`"mask"` property of the`"v-text-field"`component has been removed and I was not able to find another package that allow to **retrieve the masked and unmasked value** of an input text from a directive
+This package has been created after the`"mask"`property of the`"v-text-field"`component has been removed and I was not able to find another package that allow to **retrieve the masked and unmasked value** of an input text from a directive
 
 Technically, it is a "merge" of the`vue-the-mask`package, which is not maintained since years, and the old`mask`code from vuetify v1.5.x
 
