@@ -37,7 +37,7 @@ export default {
   - `unmaskedVar`: name of a variable defined in the "data" section of the component that will receive the "unmasked" text. It may be a structure (eg`"a.bc.d"`), but the first "level" must exists
   - `nullIfEmpty` (Defaults to **true** ): Set `"unmaskedVar"` to null if the input value is empty. 
   - `number` (Defaults to **false**): Try to cast the valof of `"unmaskedVar"` to a numbe (see below)
-  - `tokens` (Defaults to the default ones below): An array of token objects that will replace the default ones. eg `tokens="[{ 'Y': {pattern: /[0-9]/ }]"`
+  - `tokens` (Defaults to the default ones below): A structure of token objects that will replace the default ones. eg `tokens="{ 'Y': {pattern: /[A-Z]/,transform: v => v.toLocaleUpperCase()}, '#': { pattern: /\d/} }"`
   
 
 ### Tokens (From vue-the-mask)
