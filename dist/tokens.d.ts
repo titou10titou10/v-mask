@@ -2,17 +2,17 @@ declare const _default: {
     '#': {
         pattern: RegExp;
     };
-    'X': {
+    X: {
         pattern: RegExp;
     };
-    'S': {
+    S: {
         pattern: RegExp;
     };
-    'A': {
+    A: {
         pattern: RegExp;
         transform: (v: string) => string;
     };
-    'a': {
+    a: {
         pattern: RegExp;
         transform: (v: string) => string;
     };

@@ -108,7 +108,7 @@ function componentUpdated(el, binding, vnode, oldVnode) {
     if (data && data.value === oldData.value) {
         return;
     }
-    var realEl =  = getInput(el);
+    var realEl = getInput(el);
     realEl.value = data ? data.value : realEl.value;
     run(realEl, 'input', getConfig(binding), vnode);
 }
