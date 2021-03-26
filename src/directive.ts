@@ -1,4 +1,5 @@
-import { set } from 'lodash';
+import set from 'lodash.set';
+import isEqual from 'lodash.isequal';
 
 import masker from './masker';
 import predefinedMasks from './predefined';
@@ -111,7 +112,8 @@ function componentUpdated(el, binding, vnode, oldVnode) {
   // Prevent firing endless events
   const data = vnode.data.props || vnode.data.model;
   const oldData = oldVnode.data.props || oldVnode.data.model;
-  if (data && data.value === oldData.value) { return; }
+  if (data && data.value === oldData.value &&
+    isEqual(binding.value, binding.oldValue)) { return; }
 
   const realEl =  getInput(el);
   realEl.value = data ? data.value : realEl.value;
