@@ -11,7 +11,7 @@ function run(el, eventName, config, vnode) {
     var position = el.selectionEnd;
     // save the character just inserted
     var digit = beforeValue[position - 1];
-    el.value = masker_1["default"](beforeValue, config.mask, config.masked, config.tokens);
+    el.value = (0, masker_1["default"])(beforeValue, config.mask, config.masked, config.tokens);
     // if the digit was changed, increment position until find the digit again
     while (position < el.value.length &&
         el.value.charAt(position - 1) !== digit) {
@@ -25,19 +25,19 @@ function run(el, eventName, config, vnode) {
     }
     // Set unmasked value if required
     if (config.unmaskedVar) {
-        var ut = utils_1.unmaskText(el.value);
+        var ut = (0, utils_1.unmaskText)(el.value);
         if (config.nullIfEmpty && ut.trim().length === 0) {
             // Set null instead of empty if required
-            lodash_1.set(vnode.context, config.unmaskedVar, null);
+            (0, lodash_1.set)(vnode.context, config.unmaskedVar, null);
         }
         else {
             if (config.number) {
                 // Convert to number if required
                 var vNumber = parseFloat(ut);
-                lodash_1.set(vnode.context, config.unmaskedVar, isNaN(vNumber) ? ut : vNumber);
+                (0, lodash_1.set)(vnode.context, config.unmaskedVar, isNaN(vNumber) ? ut : vNumber);
             }
             else {
-                lodash_1.set(vnode.context, config.unmaskedVar, ut);
+                (0, lodash_1.set)(vnode.context, config.unmaskedVar, ut);
             }
         }
     }
@@ -58,7 +58,7 @@ function getInput(el) {
     if (el.tagName.toLocaleUpperCase() !== 'INPUT') {
         var els = el.getElementsByTagName('input');
         if (els.length !== 1) {
-            throw new Error("v-mask requires 1 input, found " + els.length);
+            throw new Error("v-mask requires 1 input, found ".concat(els.length));
         }
         else {
             el = els[0];
@@ -85,7 +85,7 @@ function getConfig(binding) {
     var modifiers = binding.modifiers;
     config.number = modifiers && modifiers.number;
     // Set mask from a predefined one eventually
-    config.mask = predefined_1["default"](config.mask) || config.mask || '';
+    config.mask = (0, predefined_1["default"])(config.mask) || config.mask || '';
     return config;
 }
 // -------------------------------

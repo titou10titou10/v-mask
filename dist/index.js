@@ -1,5 +1,6 @@
 "use strict";
 exports.__esModule = true;
+exports.unmaskText = exports.mask = void 0;
 var directive_1 = require("./directive");
 exports.mask = directive_1["default"];
 var utils_1 = require("./utils");

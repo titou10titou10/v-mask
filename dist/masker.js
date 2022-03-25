@@ -12,7 +12,7 @@ function default_1(value, mask, masked, tokens) {
         return value;
     }
     return Array.isArray(mask)
-        ? dynamic_mask_1["default"](maskit_1["default"], mask, tokens)
-        : maskit_1["default"](value, mask, masked, tokens);
+        ? (0, dynamic_mask_1["default"])(maskit_1["default"], mask, tokens)
+        : (0, maskit_1["default"])(value, mask, masked, tokens);
 }
 exports["default"] = default_1;
