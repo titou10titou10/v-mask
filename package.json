@@ -28,6 +28,7 @@
   },
   "homepage": "https://github.com/titou10titou10/v-mask#readme",
   "dependencies": {
+    "lodash.isequal": "^4.5.0",
     "lodash.set": "^4.3.2"
   },
   "devDependencies": {
