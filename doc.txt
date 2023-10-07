@@ -7,3 +7,9 @@ https://stackoverflow.com/questions/49264426/vuejs-custom-directive-emit-event
 fork from vue-the-mask: https://github.com/RonaldJerez/vue-the-mask
 https://github.com/probil/v-mask
 
+
+to publish:
+
+  npm login --reg https://registry.npmjs.org/
+  npm publish --access public --reg https://registry.npmjs.org/
+
