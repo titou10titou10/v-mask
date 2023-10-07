@@ -1,5 +1,5 @@
 "use strict";
-exports.__esModule = true;
+Object.defineProperty(exports, "__esModule", { value: true });
 function dynamicMask(maskit, masks, tokens) {
     masks = masks.slice().sort(function (a, b) { return a.length - b.length; });
     return function (value, mask, masked) {
@@ -17,4 +17,4 @@ function dynamicMask(maskit, masks, tokens) {
         return ''; // empty masks
     };
 }
-exports["default"] = dynamicMask;
+exports.default = dynamicMask;

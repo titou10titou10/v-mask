@@ -1,5 +1,5 @@
 "use strict";
-exports.__esModule = true;
+Object.defineProperty(exports, "__esModule", { value: true });
 function maskit(value, mask, masked, tokens) {
     if (masked === void 0) { masked = true; }
     var val = value || '';
@@ -46,4 +46,4 @@ function maskit(value, mask, masked, tokens) {
     }
     return output + restOutput;
 }
-exports["default"] = maskit;
+exports.default = maskit;

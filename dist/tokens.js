@@ -1,6 +1,6 @@
 "use strict";
-exports.__esModule = true;
-exports["default"] = {
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.default = {
     '#': { pattern: /\d/ },
     'X': { pattern: /[0-9a-zA-Z]/ },
     'S': { pattern: /[a-zA-Z]/ },

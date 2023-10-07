@@ -1,5 +1,5 @@
 "use strict";
-exports.__esModule = true;
+Object.defineProperty(exports, "__esModule", { value: true });
 var lodash_1 = require("lodash");
 var masker_1 = require("./masker");
 var predefined_1 = require("./predefined");
@@ -11,7 +11,7 @@ function run(el, eventName, config, vnode) {
     var position = el.selectionEnd;
     // save the character just inserted
     var digit = beforeValue[position - 1];
-    el.value = (0, masker_1["default"])(beforeValue, config.mask, config.masked, config.tokens);
+    el.value = (0, masker_1.default)(beforeValue, config.mask, config.masked, config.tokens);
     // if the digit was changed, increment position until find the digit again
     while (position < el.value.length &&
         el.value.charAt(position - 1) !== digit) {
@@ -73,7 +73,7 @@ function getConfig(binding) {
         unmaskedVar: null,
         nullIfEmpty: true,
         number: false,
-        tokens: tokens_1["default"]
+        tokens: tokens_1.default
     };
     if (typeof binding.value === 'string') {
         config.mask = binding.value;
@@ -85,7 +85,7 @@ function getConfig(binding) {
     var modifiers = binding.modifiers;
     config.number = modifiers && modifiers.number;
     // Set mask from a predefined one eventually
-    config.mask = (0, predefined_1["default"])(config.mask) || config.mask || '';
+    config.mask = (0, predefined_1.default)(config.mask) || config.mask || '';
     return config;
 }
 // -------------------------------
@@ -112,4 +112,4 @@ function componentUpdated(el, binding, vnode, oldVnode) {
     realEl.value = data ? data.value : realEl.value;
     run(realEl, 'input', getConfig(binding), vnode);
 }
-exports["default"] = { bind: bind, componentUpdated: componentUpdated };
+exports.default = { bind: bind, componentUpdated: componentUpdated };
