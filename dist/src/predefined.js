@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.default = default_1;
-var predefined = [
+const predefined = [
     { id: 'credit-card', mask: '#### - #### - #### - ####' },
     { id: 'credit-card2', mask: '#### #### #### ####' },
     { id: 'date', mask: '##/##/####' },
@@ -15,6 +15,6 @@ var predefined = [
     { id: 'postalcode-ca', mask: 'A#A #A#' }
 ];
 function default_1(mask) {
-    var res = predefined.filter(function (p) { return p.id === mask; }).map(function (p) { return p.mask; });
+    const res = predefined.filter((p) => p.id === mask).map((p) => p.mask);
     return res ? res[0] : null;
 }
