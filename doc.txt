@@ -10,6 +10,7 @@ https://github.com/probil/v-mask
 
 to publish:
 
+  npm config set cafile /etc/ssl/certs/ca-certificates.crt
   npm login --reg https://registry.npmjs.org/
   npm publish --access public --reg https://registry.npmjs.org/
 
