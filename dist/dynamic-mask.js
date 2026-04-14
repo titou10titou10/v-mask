@@ -2,14 +2,13 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.default = dynamicMask;
 function dynamicMask(maskit, masks, tokens) {
-    masks = masks.slice().sort(function (a, b) { return a.length - b.length; });
-    return function (value, mask, masked) {
-        if (masked === void 0) { masked = true; }
-        var i = 0;
+    masks = masks.slice().sort((a, b) => a.length - b.length);
+    return function (value, mask, masked = true) {
+        let i = 0;
         while (i < masks.length) {
-            var currentMask = masks[i];
+            const currentMask = masks[i];
             i++;
-            var nextMask = masks[i];
+            const nextMask = masks[i];
             // tslint:disable-next-line: max-line-length
             if (!(nextMask && maskit(value, nextMask, true, tokens).length > currentMask.length)) {
                 return maskit(value, currentMask, masked, tokens);
