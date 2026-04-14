@@ -1,13 +1,14 @@
 "use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.default = default_1;
-var maskit_1 = require("./maskit");
-var dynamic_mask_1 = require("./dynamic-mask");
-var tokens_1 = require("./tokens");
+const maskit_1 = __importDefault(require("./maskit"));
+const dynamic_mask_1 = __importDefault(require("./dynamic-mask"));
+const tokens_1 = __importDefault(require("./tokens"));
 // Facade to maskit/dynamicMask when mask is String or Array
-function default_1(value, mask, masked, tokens) {
-    if (masked === void 0) { masked = true; }
-    if (tokens === void 0) { tokens = tokens_1.default; }
+function default_1(value, mask, masked = true, tokens = tokens_1.default) {
     // disable on empty mask
     if (!mask) {
         return value;
