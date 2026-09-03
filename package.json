@@ -2,7 +2,7 @@
   "name": "@titou10/v-mask",
   "type": "module",
   "description": "mask directive for vue.js that exposes the unmasked value",
-  "version": "1.5.0",
+  "version": "1.6.0",
   "author": "Denis Forveille <titou10.titou10@gmail.com>",
   "license": "MIT",
   "keywords": [
@@ -32,12 +32,12 @@
     "lodash": "^4.18.1"
   },
   "devDependencies": {
-    "@types/lodash": "^4.17.24",
-    "@types/node": "^26.0.0",
-    "@typescript-eslint/eslint-plugin": "^8.65.0",
-    "@typescript-eslint/parser": "^8.65.0",
-    "eslint": "^10.8.0",
-    "typescript": "^6.0.0",
-    "vue": "^3.5.40"
+    "@types/lodash": "^4.17.25",
+    "@types/node": "^26.4.1",
+    "@typescript-eslint/eslint-plugin": "^8.69.0",
+    "@typescript-eslint/parser": "^8.69.0",
+    "eslint": "^10.9.1",
+    "typescript": "^6.0.3",
+    "vue": "^3.5.42"
   }
 }
